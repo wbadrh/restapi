@@ -1,0 +1,16 @@
+{
+    "name": "wbadrh/restapi",
+    "type": "library",
+    "description": "Restful API.",
+    "keywords": ["json", "rest", "restful", "api", "route", "router", "routing", "fastroute", "fast-route", "php", "psr", "http", "zend", "zendframework", "diactoros", "booboo", "oop", "controller", "htaccess", "apache", "mod_dir", "env"],
+    "homepage": "https://github.com/wbadrh/restapi",
+    "license": "MIT",
+    "require": {
+        "wbadrh/api-json": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "wbadrh\\RestAPI\\": "src/"
+        }
+    }
+}
