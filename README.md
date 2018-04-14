@@ -5,5 +5,12 @@ $ composer require wbadrh/restapi
 ```
 
 - [public_html/.htaccess](public_html/.htaccess)
-- [public_html/index.php](public_html/index.php)
+
+index.php:
+```php
+require __DIR__ . '/../vendor/autoload.php';
+
+new \wbadrh\RestAPI\Router;
+```
+
 - [src/Controller.php](src/Controller.php)
