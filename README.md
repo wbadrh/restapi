@@ -12,7 +12,7 @@ new \wbadrh\RestAPI\Router;
 ```
 
 .htaccess:
-```
+```Apache
 ################################################################
 
 SetEnv  scheme  "http"
