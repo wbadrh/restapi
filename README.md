@@ -24,8 +24,8 @@ SetEnv  host    "domain.ext"
 
 # SetEnv $method[/route/{arg1}/{arg2:$filter}] Controller::action
 
-SetEnv  GET[/]        wbadrh\\RestAPI\\Controller::response
-SetEnv  GET[/{name}]  wbadrh\\RestAPI\\Controller::response_args
+SetEnv  GET[/]        My\\Namespace\\MyController::myResponse
+SetEnv  GET[/{name}]  My\\Namespace\\MyController::myResponseArgs
 
 
 ################################################################
@@ -42,15 +42,25 @@ SetEnv  GET[/{name}]  wbadrh\\RestAPI\\Controller::response_args
 Demo Controller:
 
 ```php
-namespace wbadrh\RestAPI;
+namespace My\Namespace;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
+// Throw Not Found
+//(new \wbadrh\JSON_API\Response)->exception(404);
+
+// Returns possible exceptions to throw
+//print_r($this->reponse->exceptions());
+
+// HTTP status [200,202]
+
+// $requestBody = json_decode($request->getBody(), true);
+
 /**
  * ...
  */
-class Controller
+class MyController
 {
     /**
      * ...
@@ -59,19 +69,12 @@ class Controller
      * @param ResponseInterface        $response PSR-7 HTTP response message
      * @return Zend\Diactoros\Response $response Manipulated PSR-7 HTTP response message
      */
-    public function response(ServerRequestInterface $request, ResponseInterface $response)
+    public function myResponse(ServerRequestInterface $request, ResponseInterface $response)
     {
-        // Throw Not Found
-        //(new \wbadrh\JSON_API\Response)->exception(404);
-
-        // Returns possible exceptions to throw
-        //print_r($this->reponse->exceptions());
-
-        // Demo contents
         $contents = 'It works!';
 
         // HTTP status
-        $status = 200; // 202
+        $status = 200; 
 
         // PSR-7 JSON response
         return (new \wbadrh\JSON_API\Response)->dispatch($response, $status, $contents);
@@ -85,11 +88,8 @@ class Controller
      * @param Array                    $args     URL query parameters
      * @return Zend\Diactoros\Response $response Manipulated PSR-7 HTTP response message
      */
-    public function response_args(ServerRequestInterface $request, ResponseInterface $response, array $args)
+    public function myResponseArgs(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
-        // $requestBody = json_decode($request->getBody(), true);
-
-        // Demo contents
         $contents = 'Hello, ' . $args['name'] . '!';
 
         // HTTP status
