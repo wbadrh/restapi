@@ -44,8 +44,6 @@ Demo Controller:
 ```php
 namespace wbadrh\RestAPI;
 
-use wbadrh\JSON_API\Response;
-
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -54,17 +52,6 @@ use Psr\Http\Message\ServerRequestInterface;
  */
 class Controller
 {
-    // JSON response controller
-    private $response;
-
-    /**
-     * JSON response controller
-     */
-    function __construct()
-    {
-        $this->response = new Response;
-    }
-
     /**
      * ...
      *
@@ -75,14 +62,19 @@ class Controller
     public function response(ServerRequestInterface $request, ResponseInterface $response)
     {
         // Throw Not Found
-        //$this->response->exception(404);
+        //(new \wbadrh\JSON_API\Response)->exception(404);
+
+        // Returns possible exceptions to throw
         //print_r($this->reponse->exceptions());
 
         // Demo contents
         $contents = 'It works!';
 
+        // HTTP status
+        $status = 200; // 202
+
         // PSR-7 JSON response
-        return $this->response->dispatch($response, 200, $contents); // 202
+        return (new \wbadrh\JSON_API\Response)->dispatch($response, $status, $contents);
     }
 
     /**
@@ -100,8 +92,11 @@ class Controller
         // Demo contents
         $contents = 'Hello, ' . $args['name'] . '!';
 
+        // HTTP status
+        $status = 200; // 202
+
         // PSR-7 JSON response
-        return $this->response->dispatch($response, 200, $contents); // 202
+        return (new \wbadrh\JSON_API\Response)->dispatch($response, $status, $contents);
     }
 }
 ```
