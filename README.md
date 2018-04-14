@@ -1,6 +1,6 @@
 # Restful API
 
-composer.json:
+## composer.json:
 ```json
 {
     "require": {
@@ -18,14 +18,14 @@ composer.json:
 $ composer install
 ```
 
-public_html/index.php:
+## public_html/index.php:
 ```php
 require __DIR__ . '/../vendor/autoload.php';
 
 new \wbadrh\RestAPI\Router;
 ```
 
-public_html/.htaccess:
+## public_html/.htaccess:
 ```Apache
 ################################################################
 
@@ -53,7 +53,7 @@ SetEnv  GET[/{name}]  Name\\Space\\MyController::myResponseArgs
 ################################################################
 ```
 
-src/MyController.php:
+## src/MyController.php:
 
 ```php
 namespace Name\Space;
