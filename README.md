@@ -1,17 +1,31 @@
 # Restful API
 
-```
-$ composer require wbadrh/restapi
+composer.json:
+```json
+{
+    "require": {
+        "wbadrh/restapi": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Name\\Space\\": "src/"
+        }
+    }
+}
 ```
 
-index.php:
+```
+$ composer install
+```
+
+public_html/index.php:
 ```php
 require __DIR__ . '/../vendor/autoload.php';
 
 new \wbadrh\RestAPI\Router;
 ```
 
-.htaccess:
+public_html/.htaccess:
 ```Apache
 ################################################################
 
@@ -24,8 +38,8 @@ SetEnv  host    "domain.ext"
 
 # SetEnv $method[/route/{arg1}/{arg2:$filter}] Controller::action
 
-SetEnv  GET[/]        My\\Namespace\\MyController::myResponse
-SetEnv  GET[/{name}]  My\\Namespace\\MyController::myResponseArgs
+SetEnv  GET[/]        Name\\Space\\MyController::myResponse
+SetEnv  GET[/{name}]  Name\\Space\\MyController::myResponseArgs
 
 
 ################################################################
@@ -39,10 +53,10 @@ SetEnv  GET[/{name}]  My\\Namespace\\MyController::myResponseArgs
 ################################################################
 ```
 
-Demo Controller:
+src/MyController.php:
 
 ```php
-namespace My\Namespace;
+namespace Name\Space;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
