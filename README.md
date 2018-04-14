@@ -16,7 +16,7 @@ new \wbadrh\RestAPI\Router;
 ################################################################
 
 SetEnv  scheme  "http"
-SetEnv  host    "apitest.test"
+SetEnv  host    "domain.ext"
 
 # $method = [GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS]
 # $filter = [number, word, alphanum_dash, slug, uuid]
